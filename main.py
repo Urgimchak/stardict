@@ -4,6 +4,7 @@ from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
+import subprocess
 
 
 class DemoExtension(Extension):
@@ -16,6 +17,8 @@ class DemoExtension(Extension):
 class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
+    	meaning = subprocess.check_output(['sdcv', '--non-interactive', 'hello'], encoding='utf-8')
+    	print(meaning)
         items = []
         for i in range(5):
             items.append(ExtensionResultItem(icon='images/icon.png',

@@ -17,14 +17,15 @@ class DemoExtension(Extension):
 class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
-    	meaning = subprocess.check_output(['sdcv', '--non-interactive', 'hello'], encoding='utf-8')
-    	print(meaning)
         items = []
         for i in range(5):
             items.append(ExtensionResultItem(icon='images/icon.png',
                                              name='Item %s' % i,
                                              description='Item description %s' % i,
                                              on_enter=HideWindowAction()))
+
+        meaning = subprocess.check_output(['sdcv', '--non-interactive', 'hello'], encoding='utf-8')
+        print(meaning)
 
         return RenderResultListAction(items)
 
